@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Coin from './Coin';
 
 class CoinFlip extends Component {
-  // static defaultProps = {
-  //   toss: ['head', 'tail']
-  // };
+  static defaultProps = {
+    toss: ['head', 'tail']
+  };
   constructor(props) {
     super(props);
     this.state = { bo: [], count: 0, noheads: 0, notails: 0, face: '' };
@@ -15,10 +15,10 @@ class CoinFlip extends Component {
     var ntail = this.state.notails;
     this.setState({
       bo: [...this.state.bo, rannum],
-      noheads: rannum === 0 ? nheads + 1 : nheads,
-      notails: rannum === 1 ? ntail + 1 : ntail,
+      noheads: rannum === 1 ? nheads + 1 : nheads,
+      notails: rannum === 0 ? ntail + 1 : ntail,
       count: this.state.count + 1,
-      face: rannum === 1 ? 'headImage' + 1 : 'tailImage'
+      face: rannum === 1 ? 'headImage' : 'tailImage'
     });
 
     console.log(this.state.count);
@@ -27,10 +27,8 @@ class CoinFlip extends Component {
   render() {
     return (
       <div>
-        <Coin tossing={this.state.face} />
+        <Coin tossing={this.state.face} side={this.state.face} />
         <button onClick={this.flipping}>Flip</button>
-        <h1>nig</h1>
-        <h4>Decision:-{this.state.bo}</h4>
         <h4>Numberof Clicks:-{this.state.count}</h4>
         <h4>Heads:-{this.state.noheads}</h4>
         <h4>Tails:-{this.state.notails}</h4>

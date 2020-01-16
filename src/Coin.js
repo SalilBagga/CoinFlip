@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import headImage from './5-rupees-2011-obverse.png';
-import tailImage from './5-rupees-2011-reverse.png';
 
 class Coin extends Component {
   render() {
-    let source = ``;
+    let check = this.props.tossing;
+    console.log(this.props.tossing);
     return (
       <div>
-        <h1>hi</h1>
-        <img src={headImage} alt="face" />
+        <img
+          src={
+            check === 'headImage'
+              ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcReL0gRYX00gcv8p7La-udaLgHlm-ydFIqFcfbNB0NvyiIDn-0V'
+              : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRbkNmidM05SpQQRBCbCYeRXbC9dR2rHww98RfNgHaqX5WvLhwI'
+          }
+          alt="face"
+        />
       </div>
     );
   }
